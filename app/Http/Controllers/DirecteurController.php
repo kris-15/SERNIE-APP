@@ -1,0 +1,75 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\DirecteurRequest;
+use App\Http\Requests\UpdateDirecteurRequest;
+use App\Models\dipro;
+use App\Models\Directeur;
+use Illuminate\Http\Request;
+
+class DirecteurController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $directeurs = Directeur::all();
+        return view('directeur.index', compact('directeurs'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        $directeur = new Directeur();
+        return view('directeur.create', compact('directeur'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(DirecteurRequest $request)
+    {
+        $directeur = new Directeur();
+        $created = $directeur->create($request->all());
+        return redirect()->route('directeurs.create')->with('success', "Nouveau directeur enregistré avec succès");
+        dd($created);
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(Directeur $directeur)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Directeur $directeur)
+    {
+        return view('directeur.update', compact('directeur'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(UpdateDirecteurRequest $request, Directeur $directeur)
+    {
+        $directeur->update($request->all());
+        return redirect()->route('directeurs.edit', $directeur->id)->with('success', 'Mise à jour des informations effectuée avec succès');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Directeur $directeur)
+    {
+        $directeur->delete();
+        return redirect()->route('directeurs.index');
+    }
+}
