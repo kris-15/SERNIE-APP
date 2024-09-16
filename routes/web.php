@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnneeScolaireController;
 use App\Http\Controllers\DirecteurController;
 use App\Http\Controllers\EcoleController;
 use App\Http\Controllers\ProfileController;
@@ -19,6 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('directeurs', DirecteurController::class);
     Route::resource('ecoles', EcoleController::class);
+    Route::resource('annees', AnneeScolaireController::class);
 });
 
 require __DIR__.'/auth.php';
