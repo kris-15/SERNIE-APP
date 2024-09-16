@@ -22,5 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('ecoles', EcoleController::class);
     Route::resource('annees', AnneeScolaireController::class);
 });
+Route::get('/login/directeur', [DirecteurController::class, 'login_view']);
+Route::post('/login/directeur', [DirecteurController::class, 'login'])->name('directeur.login');
+Route::get('/directeur/dashboard', [DirecteurController::class, 'dashboard'])->name('directeur.dashboard');
+Route::get('/directeur/{id}/logout', [DirecteurController::class, 'logout'])->name('directeur.logout');
 
 require __DIR__.'/auth.php';

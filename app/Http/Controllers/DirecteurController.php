@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DirecteurLoginRequest;
 use App\Http\Requests\DirecteurRequest;
 use App\Http\Requests\UpdateDirecteurRequest;
 use App\Models\dipro;
@@ -71,5 +72,22 @@ class DirecteurController extends Controller
     {
         $directeur->delete();
         return redirect()->route('directeurs.index');
+    }
+    public function login_view(){
+        return view('directeur.login');
+    }
+    public function login(DirecteurLoginRequest $request){
+        $directeur = Directeur::where('username', $request->username)->where('code', $request->code)->first();
+        if($directeur == null)
+            return redirect()->route('directeur.login')->with('error', 'Username ou mot de passe incorrect');
+        session(['nom_directeur'=>$directeur->nom, 'id'=>$directeur->id]);
+        return redirect()->route('directeur.dashboard');
+            dd($directeur);
+    }
+    public function dashboard(){
+        return view('directeur.dashboard');
+    }
+    public function logout($id){
+
     }
 }
