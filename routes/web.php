@@ -4,6 +4,7 @@ use App\Http\Controllers\AnneeScolaireController;
 use App\Http\Controllers\DirecteurController;
 use App\Http\Controllers\EcoleController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SectionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +22,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('directeurs', DirecteurController::class);
     Route::resource('ecoles', EcoleController::class);
     Route::resource('annees', AnneeScolaireController::class);
+    Route::resource('sections', SectionController::class);
 });
 Route::get('/login/directeur', [DirecteurController::class, 'login_view']);
 Route::post('/login/directeur', [DirecteurController::class, 'login'])->name('directeur.login');
