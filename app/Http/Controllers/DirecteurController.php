@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DirecteurLoginRequest;
 use App\Http\Requests\DirecteurRequest;
 use App\Http\Requests\UpdateDirecteurRequest;
+use App\Models\AnneeScolaire;
 use App\Models\dipro;
 use App\Models\Directeur;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class DirecteurController extends Controller
@@ -85,9 +87,34 @@ class DirecteurController extends Controller
             dd($directeur);
     }
     public function dashboard(){
-        return view('directeur.dashboard');
+        if($this->check_session() == false)
+            return redirect()->route('directeur.login')->with('error', 'Veuillez vous connecter');
+        if(session('annee_id')==null)
+            return redirect()->route('directeur.annee');
+        $anneeScolaire = session('annee');
+        return view('directeur.dashboard', compact('anneeScolaire'));
     }
     public function logout($id){
-
+        // $directeur = Directeur::findOrFail($id);
+        // if($directeur){
+        //     session()->flush();
+        //     return redirect()->route('directeur.login');
+        // }
+        // return redirect()->route('directeur.dashboard');
+    }
+    public function annee_scolaire(){
+        $anneeScolaires = AnneeScolaire::all();
+        return view('directeur.annee', compact('anneeScolaires'));
+    }
+    public function choix_annee($id){
+        $anneeScolaire = AnneeScolaire::findOrFail($id);
+        session(["annee_id"=>$anneeScolaire->id, "annee"=>Carbon::parse($anneeScolaire->debut)->format('Y').'-'.Carbon::parse($anneeScolaire->fin)->format('Y')]);
+        return redirect()->route('directeur.dashboard');
+        dd($anneeScolaire);
+    }
+    public function check_session(){
+        if(session('id') == null)
+            return false;
+        return true;
     }
 }
