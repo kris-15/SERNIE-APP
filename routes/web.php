@@ -28,7 +28,7 @@ Route::get('/login/directeur', [DirecteurController::class, 'login_view']);
 Route::post('/login/directeur', [DirecteurController::class, 'login'])->name('directeur.login');
 Route::get('/directeur/dashboard', [DirecteurController::class, 'dashboard'])->name('directeur.dashboard');
 Route::get('/directeur/{id}/logout', [DirecteurController::class, 'logout'])->name('directeur.logout');
-Route::get('/directeur/annee/', [DirecteurController::class, 'annee_scolaire'])->name('directeur.annee  ');
+Route::get('/directeur/annee/', [DirecteurController::class, 'annee_scolaire'])->name('directeur.annee');
 Route::get('/directeur/annee/{id}', [DirecteurController::class, 'choix_annee'])->name('directeur.choix');
 
 require __DIR__.'/auth.php';
