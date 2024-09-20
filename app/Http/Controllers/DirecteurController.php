@@ -95,22 +95,25 @@ class DirecteurController extends Controller
         return view('directeur.dashboard', compact('anneeScolaire'));
     }
     public function logout($id){
-        // $directeur = Directeur::findOrFail($id);
-        // if($directeur){
-        //     session()->flush();
-        //     return redirect()->route('directeur.login');
-        // }
-        // return redirect()->route('directeur.dashboard');
+        $directeur = Directeur::findOrFail($id);
+        if($directeur){
+            session()->flush();
+            return redirect()->route('directeur.login');
+        }
+        return redirect()->route('directeur.dashboard');
     }
     public function annee_scolaire(){
+        if($this->check_session() == false)
+            return redirect()->route('directeur.login')->with('error', 'Veuillez vous connecter');
         $anneeScolaires = AnneeScolaire::all();
         return view('directeur.annee', compact('anneeScolaires'));
     }
     public function choix_annee($id){
+        if($this->check_session() == false)
+            return redirect()->route('directeur.login')->with('error', 'Veuillez vous connecter');
         $anneeScolaire = AnneeScolaire::findOrFail($id);
         session(["annee_id"=>$anneeScolaire->id, "annee"=>Carbon::parse($anneeScolaire->debut)->format('Y').'-'.Carbon::parse($anneeScolaire->fin)->format('Y')]);
         return redirect()->route('directeur.dashboard');
-        dd($anneeScolaire);
     }
     public function check_session(){
         if(session('id') == null)
