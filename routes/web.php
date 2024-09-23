@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AnneeScolaireController;
+use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DirecteurController;
 use App\Http\Controllers\EcoleController;
 use App\Http\Controllers\ProfileController;
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('ecoles', EcoleController::class);
     Route::resource('annees', AnneeScolaireController::class);
     Route::resource('sections', SectionController::class);
+    Route::resource('classes', ClasseController::class);
 });
 Route::get('/login/directeur', [DirecteurController::class, 'login_view']);
 Route::post('/login/directeur', [DirecteurController::class, 'login'])->name('directeur.login');
