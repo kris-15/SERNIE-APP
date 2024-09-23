@@ -18,4 +18,7 @@ class Ecole extends Model
     public function classes(): HasMany{
         return $this->hasMany(Classe::class);
     }
+    public function eleves(): HasMany{
+        return $this->hasMany(Eleve::class);
+    }
 }

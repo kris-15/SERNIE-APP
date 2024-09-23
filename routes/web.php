@@ -4,6 +4,7 @@ use App\Http\Controllers\AnneeScolaireController;
 use App\Http\Controllers\ClasseController;
 use App\Http\Controllers\DirecteurController;
 use App\Http\Controllers\EcoleController;
+use App\Http\Controllers\EleveController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SectionController;
 use Illuminate\Support\Facades\Route;
@@ -32,5 +33,6 @@ Route::get('/directeur/dashboard', [DirecteurController::class, 'dashboard'])->n
 Route::get('/directeur/{id}/logout', [DirecteurController::class, 'logout'])->name('directeur.logout');
 Route::get('/directeur/annee/', [DirecteurController::class, 'annee_scolaire'])->name('directeur.annee');
 Route::get('/directeur/annee/{id}', [DirecteurController::class, 'choix_annee'])->name('directeur.choix');
+Route::resource('directeur/eleves', EleveController::class);
 
 require __DIR__.'/auth.php';
