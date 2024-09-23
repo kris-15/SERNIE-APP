@@ -28,7 +28,7 @@
                             <label for="statut" class="block text-gray-700 text-sm font-bold mb-2">Statut de l'année</label>
                             <select id="statut" name="statut" autofocus class="block appearance-none border border-gray-300 rounded py-2 px-4 pr-8 bg-white text-gray-700 focus:outline-none focus:border-blue-500  w-full">
                                 <option value="DESACTIVE" @selected(old('statut', $anneeScolaire->statut)=="DESACTIVE")></option>
-                                <option value="OUVERT" @selected(old('statut', $anneeScolaire->statut)=="OUVERT")>OUVERT</option>
+                                <option value="OUVERT" @selected(old('statut', $anneeScolaire->statut)=="OUVERT")>EN COURS</option>
                                 <option value="FERME" @selected(old('statut', $anneeScolaire->statut)=="FERME")>FERME</option>
                             </select>
                         </div>               

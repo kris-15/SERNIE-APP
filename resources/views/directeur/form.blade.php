@@ -9,8 +9,17 @@
                         </h2>
                 
                         <p class="mt-1 text-sm text-gray-600">
-                            {{ __($directeur ? "Modifier les informations":"Enregistrez un nouveau directeur") }}
+                            {{ __($directeur->id ? "Modifier les informations":"Enregistrez un nouveau directeur") }}
                         </p>
+                        @if (session('success') != null)
+                                <p
+                                    x-data="{ show: true }"
+                                    x-show="show"
+                                    x-transition
+                                    x-init="setTimeout(() => show = false, 5000)"
+                                    class="text-sm text-green-600"
+                                >{{ __(session('success')) }}</p>
+                            @endif
                     </header>
                 
                     <form method="post" action="{{ $directeur->id ? route('directeurs.update', $directeur->id):route('directeurs.store') }}" class="mt-6 space-y-6">
@@ -41,16 +50,6 @@
                 
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __($directeur->id?'Enregistrer les modifications':'Enregistrer') }}</x-primary-button>
-                
-                            @if (session('success') != null)
-                                <p
-                                    x-data="{ show: true }"
-                                    x-show="show"
-                                    x-transition
-                                    x-init="setTimeout(() => show = false, 5000)"
-                                    class="text-sm text-gray-600"
-                                >{{ __(session('success')) }}</p>
-                            @endif
                         </div>
                     </form>
                 </section>                    

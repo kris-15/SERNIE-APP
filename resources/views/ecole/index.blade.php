@@ -24,7 +24,7 @@
                                     <th class="py-2 px-4 border">Dénomination</th>
                                     <th class="py-2 px-4 border">Nom</th>
                                     <th class="py-2 px-4 border">Type</th>
-                                    <th class="py-2 px-4 border">Directeur</th>
+                                    <th class="py-2 px-4 border">Chef d'établissement</th>
                                     <th class="py-2 px-4 border">Options</th>
                                 </tr>
                             </thead>

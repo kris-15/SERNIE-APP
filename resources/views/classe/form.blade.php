@@ -136,7 +136,7 @@
                                 </select>
                             </div>
                         </div>
-                        <input type="hidden" name="ecole_id" value="1">
+                        <input type="hidden" name="ecole_id" value="{{$ecole_id}}">
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __($classe->id?'Enregistrer les modifications':'Enregistrer') }}</x-primary-button>
                             @if (session('success') != null)

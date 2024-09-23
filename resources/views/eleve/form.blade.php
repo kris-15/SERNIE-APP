@@ -30,7 +30,7 @@
                             <select id="classe_id" name="classe_id" class="block appearance-none border border-gray-300 rounded py-2 px-4 pr-8 bg-white text-gray-700 focus:outline-none focus:border-blue-500  w-full">
                                 <option></option>
                                 @foreach ($classes as $classe)
-                                    <option value="{{$classe->id}}" @selected(old('classe_id', $classe->id)=="$eleve->classe_id")> {{strtoupper($classe->salle.' '.$classe->cycle)}} </option>
+                                    <option value="{{$classe->id}}" @selected(old('classe_id', $classe->id)=="$eleve->classe_id")> {{strtoupper($classe->salle.' '.$classe->cycle .' '.$classe->section->nom??"")}} </option>
                                 @endforeach
                             </select>
                         </div>              

@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Section extends Model
 {
     use HasFactory;
     protected $fillable = ['nom', 'description'];
-    public function classe(): BelongsToMany{
-        return $this->belongsToMany(Classe::class);
+    public function classe(): HasMany{
+        return $this->hasMany(Classe::class);
     }
 }

@@ -25,7 +25,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('ecoles', EcoleController::class);
     Route::resource('annees', AnneeScolaireController::class);
     Route::resource('sections', SectionController::class);
-    Route::resource('classes', ClasseController::class);
 });
 Route::get('/login/directeur', [DirecteurController::class, 'login_view']);
 Route::post('/login/directeur', [DirecteurController::class, 'login'])->name('directeur.login');
@@ -34,5 +33,6 @@ Route::get('/directeur/{id}/logout', [DirecteurController::class, 'logout'])->na
 Route::get('/directeur/annee/', [DirecteurController::class, 'annee_scolaire'])->name('directeur.annee');
 Route::get('/directeur/annee/{id}', [DirecteurController::class, 'choix_annee'])->name('directeur.choix');
 Route::resource('directeur/eleves', EleveController::class);
+Route::resource('directeur/classes', ClasseController::class);
 
 require __DIR__.'/auth.php';

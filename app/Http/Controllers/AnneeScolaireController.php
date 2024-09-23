@@ -36,7 +36,7 @@ class AnneeScolaireController extends Controller
         $anneeScolaire = new AnneeScolaire();
         if($request->statut == "OUVERT"){
             if($request->fin <= Carbon::now())
-                return redirect()->route('annees.edit', $anneeScolaire->id)->with('error', $this->messageErreurDate);
+                return redirect()->route('annees.create')->with('error', $this->messageErreurDate);
         }
         $anneeScolaire->create($request->all());
         return redirect()->route('annees.create')->with('success', 'Enregistrement effectué avec succès');

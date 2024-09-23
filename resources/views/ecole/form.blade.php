@@ -47,7 +47,7 @@
                             <x-input-error class="mt-2" :messages="$errors->get('adresse')" />
                         </div>
                         <div class="mb-4">
-                            <label for="directeur_id" class="block text-gray-700 text-sm font-bold mb-2">Attachez le directeur de l'école</label>
+                            <label for="directeur_id" class="block text-gray-700 text-sm font-bold mb-2">Attachez le chef d'établissement de l'école</label>
                             <select id="directeur_id" name="directeur_id" class="block appearance-none border border-gray-300 rounded py-2 px-4 pr-8 bg-white text-gray-700 focus:outline-none focus:border-blue-500  w-full">
                                 <option></option>
                                 @foreach ($directeurs as $directeur)

@@ -11,8 +11,8 @@ class Classe extends Model
 {
     use HasFactory;
     protected $fillable = ['cycle', 'salle', 'indice', 'niveau', 'section_id', 'ecole_id'];
-    public function section(): HasOne{
-        return $this->hasOne(Section::class);
+    public function section(): BelongsTo{
+        return $this->belongsTo(Section::class);
     }
     public function ecole():BelongsTo{
         return $this->belongsTo(Ecole::class);

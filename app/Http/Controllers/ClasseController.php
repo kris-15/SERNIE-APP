@@ -6,6 +6,7 @@ use App\Models\Classe;
 use App\Http\Requests\StoreClasseRequest;
 use App\Http\Requests\UpdateClasseRequest;
 use App\Models\Section;
+use App\Models\Directeur;
 
 class ClasseController extends Controller
 {
@@ -22,9 +23,19 @@ class ClasseController extends Controller
      */
     public function create()
     {
+        
+        if($this->check_session() == false)
+            return redirect()->route('directeur.login')->with('error', 'Veuillez vous connecter');
         $classe = new Classe();
         $sections = Section::all();
-        return view('classe.create', compact('sections', 'classe'));
+        $directeur = Directeur::findOrFail(session('id'));
+        $ecole_id = $directeur->ecole->id;
+        return view('classe.create', compact('sections', 'classe', 'ecole_id'));
+    }
+    public function check_session(){
+        if(session('id') == null)
+            return false;
+        return true;
     }
 
     /**
@@ -89,7 +100,6 @@ class ClasseController extends Controller
                 ->where('niveau', $tableauClasse['niveau'])
                 ->where('ecole_id', $tableauClasse['ecole_id'])
                 ->where('salle', $tableauClasse['salle'])
-                ->where('indice', $tableauClasse['indice'])
                 ->where('section_id', $tableauClasse['section_id'])
                 ->first()
             ;
@@ -100,7 +110,7 @@ class ClasseController extends Controller
 
         $classe = new Classe();
         $classe->create($tableauClasse);
-        return redirect()->back()->with('success', 'Enregistrement effectué avec succès');
+        return redirect()->route('classes.create')->with('success', 'Enregistrement effectué avec succès');
     }
     
 
