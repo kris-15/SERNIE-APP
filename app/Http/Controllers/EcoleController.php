@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ecole;
 use App\Http\Requests\StoreEcoleRequest;
 use App\Http\Requests\UpdateEcoleRequest;
+use App\Models\Classe;
 use App\Models\Directeur;
 
 class EcoleController extends Controller
@@ -43,7 +44,8 @@ class EcoleController extends Controller
      */
     public function show(Ecole $ecole)
     {
-        //
+        $classes = Classe::where('ecole_id', $ecole->id)->get();
+        return view('ecole.classes', compact('classes'));
     }
 
     /**

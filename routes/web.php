@@ -34,5 +34,8 @@ Route::get('/directeur/annee/', [DirecteurController::class, 'annee_scolaire'])-
 Route::get('/directeur/annee/{id}', [DirecteurController::class, 'choix_annee'])->name('directeur.choix');
 Route::resource('directeur/eleves', EleveController::class);
 Route::resource('directeur/classes', ClasseController::class);
+Route::get('/test', function(){
+    return view('brouillon');
+});
 
 require __DIR__.'/auth.php';
