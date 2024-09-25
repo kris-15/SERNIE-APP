@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Classe extends Model
@@ -16,5 +17,8 @@ class Classe extends Model
     }
     public function ecole():BelongsTo{
         return $this->belongsTo(Ecole::class);
+    }
+    public function eleve_classe_annees(){
+        return $this->HasMany(EleveClasseAnnee::class);
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Requests\StoreEcoleRequest;
 use App\Http\Requests\UpdateEcoleRequest;
 use App\Models\Classe;
 use App\Models\Directeur;
+use App\Models\EleveClasseAnnee;
 
 class EcoleController extends Controller
 {
@@ -72,5 +73,14 @@ class EcoleController extends Controller
     public function destroy(Ecole $ecole)
     {
         //
+    }
+    public function eleves_by_classe($id_ecole, $id_classe){
+        $ecole = Ecole::findOrFail($id_ecole);
+        $classe = Classe::findOrFail($id_classe);
+        if($classe->ecole_id == $ecole->id){
+            $eleves = EleveClasseAnnee::where('classe_id', $classe->id)->get();
+            return view('ecole.classe_eleves', compact('eleves', 'ecole'));
+        }
+        return redirect()->route('ecoles.show', $id_ecole);
     }
 }

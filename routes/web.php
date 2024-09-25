@@ -25,6 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('ecoles', EcoleController::class);
     Route::resource('annees', AnneeScolaireController::class);
     Route::resource('sections', SectionController::class);
+    Route::get('/ecole/{id}/classes/{classe}/eleves', [EcoleController::class, 'eleves_by_classe'])->name('ecole.classe.eleve');
 });
 Route::get('/login/directeur', [DirecteurController::class, 'login_view']);
 Route::post('/login/directeur', [DirecteurController::class, 'login'])->name('directeur.login');

@@ -22,7 +22,7 @@
                     <h3 class="font-bold text-lg">{{$classe->salle.' - '.$classe->indice}}</h3>
                     <p class="mt-2 text-gray-600 text-sm">Cycle : {{$classe->cycle}} </p>
                     <p class="mt-2 text-gray-600 text-sm">Section : {{ $classe->section->nom ?? "N/D."}} </p>
-                    <p class="mt-2 text-gray-600 text-sm"><a href="" class="font-style-italic">Voir les élèves </a> </p>
+                    <p class="mt-2 text-gray-600 text-sm"><a href="{{route('ecole.classe.eleve', [$classe->ecole_id, $classe->id])}}" class="font-style-italic">Voir les élèves </a> </p>
                 </div>
             </div>
         @empty
