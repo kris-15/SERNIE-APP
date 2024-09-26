@@ -35,22 +35,22 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('directeurs.index')" :active="request()->routeIs('directeurs.index')">
-                            {{ __('Directeur') }}
+                        <x-nav-link :href="route('directeurs.index')" :active="request()->routeIs('directeurs.index') || request()->routeIs('directeurs.create')">
+                            {{ __('Chef d\'établissement') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('ecoles.index')" :active="request()->routeIs('ecoles.index')">
+                        <x-nav-link :href="route('ecoles.index')" :active="request()->routeIs('ecoles.index') || request()->routeIs('ecoles.create')">
                             {{ __('Ecole') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('annees.index')" :active="request()->routeIs('annees.index')">
+                        <x-nav-link :href="route('annees.index')" :active="request()->routeIs('annees.index') || request()->routeIs('annees.create')">
                             {{ __('Année scolaire') }}
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('sections.index')" :active="request()->routeIs('sections.index')">
+                        <x-nav-link :href="route('sections.index')" :active="request()->routeIs('sections.index') || request()->routeIs('sections.create')">
                             {{ __('Sections') }}
                         </x-nav-link>
                     </div>

@@ -4,6 +4,9 @@
             <h2 class="font-semibold text-xl text-gray-800 leading-tight basis-1/3">
                 {{ __($directeur->ecole->denomination.' '.$directeur->ecole->nom.' / Liste des élèves') }}
             </h2>
+            <div class="basis-1/3">
+                <a class="bg-gray-800 text-white py-1 px-4 rounded" href="{{route('eleves.create')}}">Enregistrer un nouvel élève</a>
+            </div>
         </div>
     </x-slot>
     @php

@@ -28,7 +28,7 @@
             @endisset
 
             <!-- Page Content -->
-            <div class="flex h-screen bg-gray-100 relative overflow-hidden">
+            <div class="flex h-screen bg-gray-100 relative">
                 <div class="absolute inset-0 overflow-hidden">
                     <div class="slideshow-container">
                         <div class="slide bg-cover bg-center" style='background-image: url({{ asset("img/epst_logo.jpg")}}); background-size: cover; background-position: center; max-height: 80vh;'></div>
