@@ -15,7 +15,11 @@ class ClasseController extends Controller
      */
     public function index()
     {
-        //
+        if($this->check_session() == false)
+            return redirect()->route('directeur.login')->with('error', 'Veuillez vous connecter');
+        $directeur = Directeur::findOrFail(session('id'));
+        $classes = Classe::where('ecole_id', $directeur->ecole->id)->get();
+        return view('directeur.classes', compact('classes'));
     }
 
     /**

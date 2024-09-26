@@ -29,12 +29,13 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/login/directeur', [DirecteurController::class, 'login_view']);
 Route::post('/login/directeur', [DirecteurController::class, 'login'])->name('directeur.login');
-Route::get('/directeur/dashboard', [DirecteurController::class, 'dashboard'])->name('directeur.dashboard');
+Route::get('/directeur/dashboard', [EleveController::class, 'index'])->name('directeur.dashboard');
 Route::get('/directeur/{id}/logout', [DirecteurController::class, 'logout'])->name('directeur.logout');
 Route::get('/directeur/annee/', [DirecteurController::class, 'annee_scolaire'])->name('directeur.annee');
 Route::get('/directeur/annee/{id}', [DirecteurController::class, 'choix_annee'])->name('directeur.choix');
 Route::resource('directeur/eleves', EleveController::class);
 Route::resource('directeur/classes', ClasseController::class);
+Route::get('directeur/classe/{id}', [EleveController::class, 'eleves_by_classe'])->name("directeur.classe.eleve");
 Route::get('/test', function(){
     return view('brouillon');
 });

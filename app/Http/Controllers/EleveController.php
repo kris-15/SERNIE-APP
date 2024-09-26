@@ -6,6 +6,7 @@ use App\Models\Eleve;
 use App\Http\Requests\StoreEleveRequest;
 use App\Http\Requests\UpdateEleveRequest;
 use App\Models\Classe;
+use App\Models\Directeur;
 use App\Models\EleveClasseAnnee;
 
 class EleveController extends Controller
@@ -15,7 +16,12 @@ class EleveController extends Controller
      */
     public function index()
     {
-        //
+        if($this->check_session() == false)
+            return redirect()->route('directeur.login')->with('error', 'Veuillez vous connecter');
+        $directeur = Directeur::findOrFail(session('id'));
+        $eleves = EleveClasseAnnee::all();
+        return view('directeur.classe_eleves', compact('eleves', 'directeur'));
+        dd($eleves);
     }
 
     /**
@@ -94,5 +100,21 @@ class EleveController extends Controller
     public function destroy(Eleve $eleve)
     {
         //
+    }
+    public function check_session(){
+        if(session('id') == null)
+            return false;
+        return true;
+    }
+    public function eleves_by_classe($id_classe){
+        if($this->check_session() == false)
+            return redirect()->route('directeur.login')->with('error', 'Veuillez vous connecter');
+        $directeur = Directeur::findOrFail(session('id'));
+        $classe = Classe::findOrFail($id_classe);
+        if($classe->ecole_id == $directeur->ecole->id){
+            $eleves = EleveClasseAnnee::where('classe_id', $classe->id)->get();
+            return view('directeur.classe_eleves', compact('eleves', 'directeur'));
+        }
+        return redirect()->route('classes.index');
     }
 }

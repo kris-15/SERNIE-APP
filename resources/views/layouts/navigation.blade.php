@@ -14,8 +14,18 @@
                 <!-- Navigation Links -->
                 @if (session('nom_directeur'))
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard Directeur') }}
+                        <x-nav-link :href="route('directeur.dashboard')" :active="request()->routeIs('directeur.dashboard')">
+                            {{ __('Dashboard Chef d\'établissement') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('classes.index')" :active="request()->routeIs('classes.index') || request()->routeIs('classes.create')">
+                            {{ __('Classes') }}
+                        </x-nav-link>
+                    </div>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('eleves.index')" :active="request()->routeIs('eleves.create') || request()->routeIs('eleves.index')">
+                            {{ __('Eleves') }}
                         </x-nav-link>
                     </div>
                 @else
@@ -63,7 +73,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
+                        <x-dropdown-link :href=" session('id')? '' :route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
                         @if (session('id'))
