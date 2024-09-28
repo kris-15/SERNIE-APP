@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ResearchRequest;
 use App\Models\Eleve;
 use App\Http\Requests\StoreEleveRequest;
 use App\Http\Requests\UpdateEleveRequest;
@@ -116,5 +117,14 @@ class EleveController extends Controller
             return view('directeur.classe_eleves', compact('eleves', 'directeur'));
         }
         return redirect()->route('classes.index');
+    }
+    public function recherche(ResearchRequest $request){
+        $eleves = Eleve::where($request->champ, $request->valeur)->get();
+        
+        if($eleves == null)
+            return redirect()->back()->with('error', 'Aucun élève trouvé');
+        session(['user'=>true]);
+        
+        return view('user_eleves', compact('eleves'));
     }
 }

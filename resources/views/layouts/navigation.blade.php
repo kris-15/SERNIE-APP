@@ -4,56 +4,61 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                @if (session('user'))
+                    <a href="{{ route('user') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
-                </div>
-
-                <!-- Navigation Links -->
-                @if (session('nom_directeur'))
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('directeur.dashboard')" :active="request()->routeIs('directeur.dashboard')">
-                            {{ __('Dashboard Chef d\'établissement') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('classes.index')" :active="request()->routeIs('classes.index') || request()->routeIs('classes.create')">
-                            {{ __('Classes') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('eleves.index')" :active="request()->routeIs('eleves.create') || request()->routeIs('eleves.index')">
-                            {{ __('Eleves') }}
-                        </x-nav-link>
-                    </div>
                 @else
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-nav-link>
+                    <div class="shrink-0 flex items-center">
+                        <a href="{{ route('dashboard') }}">
+                            <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        </a>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('directeurs.index')" :active="request()->routeIs('directeurs.index') || request()->routeIs('directeurs.create')">
-                            {{ __('Chef d\'établissement') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('ecoles.index')" :active="request()->routeIs('ecoles.index') || request()->routeIs('ecoles.create')">
-                            {{ __('Ecole') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('annees.index')" :active="request()->routeIs('annees.index') || request()->routeIs('annees.create')">
-                            {{ __('Année scolaire') }}
-                        </x-nav-link>
-                    </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link :href="route('sections.index')" :active="request()->routeIs('sections.index') || request()->routeIs('sections.create')">
-                            {{ __('Sections') }}
-                        </x-nav-link>
-                    </div>
+
+                    <!-- Navigation Links -->
+                    @if (session('nom_directeur'))
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('directeur.dashboard')" :active="request()->routeIs('directeur.dashboard')">
+                                {{ __('Dashboard Chef d\'établissement') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('classes.index')" :active="request()->routeIs('classes.index') || request()->routeIs('classes.create')">
+                                {{ __('Classes') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('eleves.index')" :active="request()->routeIs('eleves.create') || request()->routeIs('eleves.index')">
+                                {{ __('Eleves') }}
+                            </x-nav-link>
+                        </div>
+                    @else
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                                {{ __('Dashboard') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('directeurs.index')" :active="request()->routeIs('directeurs.index') || request()->routeIs('directeurs.create')">
+                                {{ __('Chef d\'établissement') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('ecoles.index')" :active="request()->routeIs('ecoles.index') || request()->routeIs('ecoles.create')">
+                                {{ __('Ecole') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('annees.index')" :active="request()->routeIs('annees.index') || request()->routeIs('annees.create')">
+                                {{ __('Année scolaire') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link :href="route('sections.index')" :active="request()->routeIs('sections.index') || request()->routeIs('sections.create')">
+                                {{ __('Sections') }}
+                            </x-nav-link>
+                        </div>
+                    @endif
                 @endif
             </div>
 
