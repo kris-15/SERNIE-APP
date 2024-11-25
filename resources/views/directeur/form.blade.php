@@ -5,11 +5,11 @@
                 <section>
                     <header>
                         <h2 class="text-lg font-medium text-gray-900">
-                            {{ __('Information directeur') }}
+                            {{ __('Information chef d\'établissemnt') }}
                         </h2>
                 
                         <p class="mt-1 text-sm text-gray-600">
-                            {{ __($directeur->id ? "Modifier les informations":"Enregistrez un nouveau directeur") }}
+                            {{ __($directeur->id ? "Modifier les informations":"Enregistrez un nouveau chef d'établissement") }}
                         </p>
                         @if (session('success') != null)
                                 <p
@@ -28,12 +28,12 @@
                         <x-text-input id="code" name="code" type="hidden" class="mt-1 block w-full" :value=" $directeur->id ?  $directeur->code : strtoupper(\Illuminate\Support\Str::random(6))"/>
                 
                         <div>
-                            <x-input-label for="nom" :value="__('Nom du directeur')" />
+                            <x-input-label for="nom" :value="__('Nom du chef d\'établissement')" />
                             <x-text-input id="nom" name="nom" type="text" class="mt-1 block w-full" :value="old('nom', $directeur->nom)" required autofocus autocomplete="nom" />
                             <x-input-error class="mt-2" :messages="$errors->get('nom')" />
                         </div>
                         <div>
-                            <x-input-label for="prenom" :value="__('Prénom du directeur')" />
+                            <x-input-label for="prenom" :value="__('Prénom du chef d\'établissement')" />
                             <x-text-input id="prenom" name="prenom" type="text" class="mt-1 block w-full" :value="old('prenom', $directeur->prenom)" required autofocus autocomplete="prenom" />
                             <x-input-error class="mt-2" :messages="$errors->get('prenom')" />
                         </div>
@@ -43,7 +43,7 @@
                             <x-input-error class="mt-2" :messages="$errors->get('username')" />
                         </div>
                         <div>
-                            <x-input-label for="telephone" :value="__('Téléphone du directeur (+243)')" />
+                            <x-input-label for="telephone" :value="__('Téléphone du chef d\'établissement (+243)')" />
                             <x-text-input id="telephone" name="telephone" type="text" class="mt-1 block w-full" :value="old('telephone', $directeur->telephone)" required autofocus autocomplete="telephone" />
                             <x-input-error class="mt-2" :messages="$errors->get('telephone')" />
                         </div>

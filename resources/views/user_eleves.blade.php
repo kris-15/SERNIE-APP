@@ -13,7 +13,6 @@
                         <table class="min-w-full bg-white border border-gray-300">
                             <thead class="bg-gray-800 text-white">
                                 <tr>
-                                    <th class="py-2 px-4 border">#</th>
                                     <th class="py-2 px-4 border">Nom</th>
                                     <th class="py-2 px-4 border">Post-nom</th>
                                     <th class="py-2 px-4 border">Prenom</th>
@@ -24,7 +23,6 @@
                             <tbody>
                                 @forelse ($eleves as $eleve)
                                     <tr class="hover:bg-gray-100 text-center">
-                                        <td class="py-2 px-4 border"> {{$compteur++}} </td>
                                         <td class="py-2 px-4 border"> {{$eleve->nom}} </td>
                                         <td class="py-2 px-4 border">{{$eleve->postnom}}</td>
                                         <td class="py-2 px-4 border">{{$eleve->prenom}}</td>

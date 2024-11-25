@@ -36,7 +36,7 @@ Route::get('/directeur/annee/{id}', [DirecteurController::class, 'choix_annee'])
 Route::resource('directeur/eleves', EleveController::class);
 Route::resource('directeur/classes', ClasseController::class);
 Route::get('directeur/classe/{id}', [EleveController::class, 'eleves_by_classe'])->name("directeur.classe.eleve");
-Route::get('/test', function(){
+Route::get('/utilisateur', function(){
     return view('user');
 })->name('user');
 Route::post('user/recherche', [EleveController::class, 'recherche'])->name('user.search');

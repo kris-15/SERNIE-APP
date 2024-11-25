@@ -2,7 +2,7 @@
     <x-slot name="header">
         <div class="flex">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight basis-1/3">
-                {{ __($directeur->ecole->denomination.' '.$directeur->ecole->nom.' / Liste des élèves') }}
+                {{ __('Administration '.$anneeScolaire) }}
             </h2>
             <div class="basis-1/3">
                 <a class="bg-gray-800 text-white py-1 px-4 rounded" href="{{route('eleves.create')}}">Enregistrer un nouvel élève</a>
@@ -17,6 +17,9 @@
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xxl">
                     <div class="overflow-x-auto">
+                        <h2 class="font-semibold text-xl text-gray-800 leading-tight  text-center m-3">
+                            {{ __($directeur->ecole->denomination.' '.$directeur->ecole->nom.' / Liste des élèves') }}
+                        </h2>
                         <table class="min-w-full bg-white border border-gray-300">
                             <thead class="bg-gray-800 text-white">
                                 <tr>
@@ -40,7 +43,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <p class="text-red-500 text-center">Aucune élève enregistré pour cette classe</p>
+                                        <p class="text-red-500 text-center">Aucune élève enregistré pour cette année</p>
                                     </tr>
                                 @endforelse
                             </tbody>

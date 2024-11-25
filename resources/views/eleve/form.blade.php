@@ -20,6 +20,15 @@
                                 class="text-sm text-red-600"
                             >{{ __(session('error')) }}</p>
                         @endif
+                        @if (session('success') != null)
+                                <p
+                                    x-data="{ show: true }"
+                                    x-show="show"
+                                    x-transition
+                                    x-init="setTimeout(() => show = false, 5000)"
+                                    class="text-sm text-green-600"
+                                >{{ __(session('success')) }}</p>
+                        @endif
                     </header>
                 
                     <form method="post" action="{{ $eleve->id ? route('eleves.update', $eleve->id):route('eleves.store') }}" class="mt-6 space-y-6">
@@ -80,15 +89,7 @@
                         <input type="hidden" name="annee_scolaire_id" value="1">
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __($eleve->id?'Enregistrer les modifications':'Enregistrer') }}</x-primary-button>
-                            @if (session('success') != null)
-                                <p
-                                    x-data="{ show: true }"
-                                    x-show="show"
-                                    x-transition
-                                    x-init="setTimeout(() => show = false, 5000)"
-                                    class="text-sm text-green-600"
-                                >{{ __(session('success')) }}</p>
-                            @endif
+                            
                         </div>
                     </form>
                 </section>                    

@@ -34,7 +34,6 @@
                                         <td class="py-2 px-4 border">{{$section->description}}</td>
                                         <td class="py-2 px-4 border mt-4 text-center">
                                             <a class="bg-blue-500 text-white py-1 px-4 rounded" href="{{route('sections.edit', $section->id)}}">Modifier</a>
-                                            <a class="bg-red-500 text-white py-1 px-4 rounded" href="{{route('sections.destroy', $section->id)}}" method="delete">Supprimer</a>
                                         </td>
                                     </tr>
                                 @empty

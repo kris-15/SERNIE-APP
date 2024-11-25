@@ -101,7 +101,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         const data1 = {
-            labels: ['Homme', 'Femme'],
+            labels: ['Masculin', 'Feminin'],
             datasets: [{
                 label: 'Statistiques',
                 data: [750, 550],

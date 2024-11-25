@@ -19,9 +19,12 @@ class EleveController extends Controller
     {
         if($this->check_session() == false)
             return redirect()->route('directeur.login')->with('error', 'Veuillez vous connecter');
+        if(session('annee_id')==null)
+            return redirect()->route('directeur.annee');
         $directeur = Directeur::findOrFail(session('id'));
         $eleves = EleveClasseAnnee::all();
-        return view('directeur.classe_eleves', compact('eleves', 'directeur'));
+        $anneeScolaire = session('annee');
+        return view('directeur.classe_eleves', compact('eleves', 'directeur', 'anneeScolaire'));
         dd($eleves);
     }
 
@@ -113,8 +116,9 @@ class EleveController extends Controller
         $directeur = Directeur::findOrFail(session('id'));
         $classe = Classe::findOrFail($id_classe);
         if($classe->ecole_id == $directeur->ecole->id){
+            $anneeScolaire = session('annee');
             $eleves = EleveClasseAnnee::where('classe_id', $classe->id)->get();
-            return view('directeur.classe_eleves', compact('eleves', 'directeur'));
+            return view('directeur.classe_eleves', compact('eleves', 'directeur', 'anneeScolaire'));
         }
         return redirect()->route('classes.index');
     }

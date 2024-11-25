@@ -11,7 +11,17 @@
                         <p class="mt-1 text-sm text-gray-600">
                             {{ __($ecole->id ? "Modifier les informations":"Enregistrez une nouvelle école") }}
                         </p>
+                        @if (session('success') != null)
+                            <p
+                                x-data="{ show: true }"
+                                x-show="show"
+                                x-transition
+                                x-init="setTimeout(() => show = false, 5000)"
+                                class="text-sm text-green-600"
+                            >{{ __(session('success')) }}</p>
+                        @endif
                     </header>
+
                 
                     <form method="post" action="{{ $ecole->id ? route('ecoles.update', $ecole->id):route('ecoles.store') }}" class="mt-6 space-y-6">
                         @csrf
@@ -57,16 +67,6 @@
                         </div>
                         <div class="flex items-center gap-4">
                             <x-primary-button>{{ __($ecole->id?'Enregistrer les modifications':'Enregistrer') }}</x-primary-button>
-                
-                            @if (session('success') != null)
-                                <p
-                                    x-data="{ show: true }"
-                                    x-show="show"
-                                    x-transition
-                                    x-init="setTimeout(() => show = false, 5000)"
-                                    class="text-sm text-green-600"
-                                >{{ __(session('success')) }}</p>
-                            @endif
                         </div>
                     </form>
                 </section>                    
